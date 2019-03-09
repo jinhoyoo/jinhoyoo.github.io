@@ -1,37 +1,27 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
-date: 2016-03-21
+title: About Archer
+tags: [about, Archer, Jinho, Yoo, Tech]
+date: 2019-03-10
 comments: false
 ---
-    
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
 
-## Features
-* Minimal, you can focus on your content
-* Responsive
-* Disqus integration
-* Syntax highlighting
-* Optional post image
-* Social icons
-* Page for sharing projects
-* Optional background image
-* Simple navigation menu
-* MathJax support
+## Who's Archer Yoo? 
 
-## Preview
+ Experienced software engineer in microservice architect on the cloud environment and interested in machine learning.
 
-{% capture images %}
-    https://cloud.githubusercontent.com/assets/754514/14509720/61c61058-01d6-11e6-93ab-0918515ecd56.png
-    https://cloud.githubusercontent.com/assets/754514/14509716/61ac6c8e-01d6-11e6-879f-8308883de790.png
-{% endcapture %}
-{% include gallery images=images caption="Screenshots of Moon Theme" cols=2 %}
 
-See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
+## Tech stack I'm interesting 
+  - Cloud platform : AWS and Google app engine
+  - Big data system : Apache Spark and Apache Zeppelin
+  - Linux system programming: GCC, Make, CMAKE, GTK and QT
+  - Golang
+  - Python: Flask, Numpy, and TensorFlow
+  - No SQL: MongoDB 
+  - iOS: Swift and Objective-C
+  - Game engine: Unity 3D and OpenFL
+  - Graphics: OpenGL, GLSL, and Cg
+  - Windows: MFC and Win32 API
+  - Virtualization and Isolation: Kubernetes, Vagrant and Docker
+  - Continuous integration: Jenkins and Teamcity
 
-## Getting Started
-
-To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
-      
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}
