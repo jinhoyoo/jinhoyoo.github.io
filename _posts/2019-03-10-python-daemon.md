@@ -13,7 +13,8 @@ comments: true
 
   In technically, the PID of parent process of daemon process is 1 and no terminal to control this process.
 
-  And __it just runs once__. It means you cannot run the same daemon processes more. 
+  And __you cannot run the same daemon processes if you ran it__.
+
 
   According to Stevens in [stevens](https://books.google.co.kr/books/about/UNIX_Network_Programming.html?id=Rc1QAAAAMAAJ&redir_esc=y), a program should perform the following steps to become a Unix daemon process. (From [this](https://www.python.org/dev/peps/pep-3143/#correct-daemon-behaviour) document.)
    
@@ -22,18 +23,18 @@ comments: true
    - Reset the file access creation mask.
    - Run in the background.
    - Disassociate from process group.
-   -  Ignore terminal I/O signals.
-   -  Disassociate from control terminal.
-   -  Don't reacquire a control terminal.
-   -  Correctly handle the following circumstances:
-   -  Started by System V init process.
-   -  Daemon termination by SIGTERM signal.
-   -  Children generate SIGCLD signal.
+   - Ignore terminal I/O signals.
+   - Disassociate from control terminal.
+   - Don't reacquire a control terminal.
+   - Correctly handle the following circumstances:
+   - Started by System V init process.
+   - Daemon termination by SIGTERM signal.
+   - Children generate SIGCLD signal.
 
 
 # How to make daemon process in Python.
 
- Python provide [standard daemon process library](https://www.python.org/dev/peps/pep-3143/). And I made simple example code like following.
+ Python provides [standard daemon process library](https://www.python.org/dev/peps/pep-3143/). And I made simple example code like following.
 
 
 
