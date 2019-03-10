@@ -13,7 +13,7 @@ comments: true
 
   In technically, the PID of parent process of daemon process is 1 and no terminal to control this process.
 
-  And __it just runs once__. It means you cannot run the more daemon processes.
+  And __it just runs once__. It means you cannot run the same daemon processes more. 
 
   According to Stevens in [stevens](https://books.google.co.kr/books/about/UNIX_Network_Programming.html?id=Rc1QAAAAMAAJ&redir_esc=y), a program should perform the following steps to become a Unix daemon process. (From [this](https://www.python.org/dev/peps/pep-3143/#correct-daemon-behaviour) document.)
    
