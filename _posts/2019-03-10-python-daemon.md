@@ -9,14 +9,9 @@ comments: true
 
 # What's the daemon?
 
-  Daemon is the process running in background and do some task e.g. write the log or response from the client.
+  Daemon is the process running in background and do some task e.g. write the log or response from the client. In technically, the PID of parent process of daemon process is 1 and no terminal to control this process. 
 
-  In technically, the PID of parent process of daemon process is 1 and no terminal to control this process.
-
-  And __you cannot run the same daemon processes if you ran it__.
-
-
-  According to Stevens in [stevens](https://books.google.co.kr/books/about/UNIX_Network_Programming.html?id=Rc1QAAAAMAAJ&redir_esc=y), a program should perform the following steps to become a Unix daemon process. (From [this](https://www.python.org/dev/peps/pep-3143/#correct-daemon-behaviour) document.)
+  According to [stevens](https://books.google.co.kr/books/about/UNIX_Network_Programming.html?id=Rc1QAAAAMAAJ&redir_esc=y), a program should perform the following steps to become a Unix daemon process. (From [this](https://www.python.org/dev/peps/pep-3143/#correct-daemon-behaviour) document.)
    
    - Close all open file descriptors.
    - Change current working directory.
@@ -30,7 +25,6 @@ comments: true
    - Started by System V init process.
    - Daemon termination by SIGTERM signal.
    - Children generate SIGCLD signal.
-
 
 # How to make daemon process in Python.
 
