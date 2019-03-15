@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Build a Go-lang back-end with the Gin framework and authenticate with JWT  and React front-end."
+title: "Build a Go-lang back-end with the Gin framework and authenticate with JWT and React front-end"
 date: 2019-03-16
-excerpt: "Today, I finished the prototyping very small web service in Go. It's the practice the Go lang and React. It was the journey to the unexplored platform. The bible said, "There is nothing new under the sun". So I started from this article."
+excerpt: "Today, I finished the prototyping very small web service in Go."
 tags: [Go, Gin, React, JavaScript, ]
 comments: true
 ---
@@ -16,7 +16,7 @@ Today, I finished  [the prototyping very small web service](https://github.com/j
 
  This example uses [Gin](https://github.com/gin-gonic/gin) framework in Go.  It's very [simple and fast web framework](https://gin-gonic.com/). See [this document](https://gin-gonic.com/docs/benchmarks/). 
 
-![](-6fd0b5de-f967-4826-aa75-b9be7b66d7f2untitled)
+![image](/assets/img/-6fd0b5de-f967-4826-aa75-b9be7b66d7f2untitled)
 
 Let's start with drinking cool water, not gin. 
 
@@ -272,7 +272,7 @@ class LoggedIn extends React.Component {
 
  Go with Gin seems to work well. React is still hard to follow the code follow. Gin has a very flexible structure with middleware. It's good to extend the action with the handler.  [This repository](https://github.com/jinhoyoo/golang-gin)  has all code I revised.
 
-![](-c7d2c490-4261-4911-b281-65db1e1fd74cuntitled)
+![](/assets/img/-c7d2c490-4261-4911-b281-65db1e1fd74cuntitled)
 
 OK, let's have break. 
 
