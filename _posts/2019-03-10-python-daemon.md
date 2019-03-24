@@ -4,7 +4,7 @@ title: "Example to use python-daemon and runner.DaemonRunner"
 date: 2019-03-10
 excerpt: "Just example."
 tags: [python, daemon.runner]
-comments: true
+comments: false
 ---
 
 # What's the daemon?

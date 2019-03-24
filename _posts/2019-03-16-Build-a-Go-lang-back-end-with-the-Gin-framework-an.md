@@ -4,7 +4,7 @@ title: "Build a Go-lang back-end with the Gin framework and authenticate with JW
 date: 2019-03-16
 excerpt: "Today, I finished the prototyping very small web service in Go."
 tags: [Go, Gin, React, JavaScript, ]
-comments: true
+comments: false
 ---
 
 
