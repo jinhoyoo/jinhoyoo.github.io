@@ -59,6 +59,11 @@ Generally, Go assumes that all modules will be served via git repository or serv
 
 But there are exceptions. If you need to build the home brew application in your private business with the private git hosting service e.g. gitlab or github enterprise, you don't need to use the module name with git hosting service like github.com.
 
+In this case, I used the latest module management rule of Go. How you can locate your source code outside of ```GOPATH```. So any module can be linked outside of ```GOPATH```.
+
+To guide the localtion of modules, we used ```go.mod``` and generated this file by using ```go mod init myapp ```. 
+YOU DON'T NEED TO VERSION CONTROL ```go.mod``` file. Because it can be modified in any case like binary file.
+
 
 When we should activate `GO1111MOULE` ?
 ------
