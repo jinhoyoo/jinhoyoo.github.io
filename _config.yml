@@ -30,9 +30,9 @@ disqus_shortname:   taylantatli
 
 # Social
 # if you don't have any of social below, comment the line.
-#google:
+google:
   #plus:            brotherjinho
-  #analytics:
+  analytics:        UA-11303268-2
   #verify:
   #ad-client:
   #ad-slot:
