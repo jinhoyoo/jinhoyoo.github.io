@@ -20,7 +20,7 @@ It's summarized note that I need to remember for Golang.
 
 Declare the structure like this. 
 
-``` Go
+``` go
     //Due date can be nil because there is a task without due date.
     type Task struct {
     		title string
