@@ -62,7 +62,14 @@ But there are exceptions. If you need to build the home brew application in your
 In this case, I used the latest module management rule of Go. How you can locate your source code outside of ```GOPATH```. So any module can be linked outside of ```GOPATH```.
 
 To guide the localtion of modules, we used ```go.mod``` and generated this file by using ```go mod init myapp ```. 
-YOU DON'T NEED TO VERSION CONTROL ```go.mod``` file. Because it can be modified in any case like binary file.
+
+
+## Should I keep go.mod and go.sum under version control? 
+
+**My answer is YES**. In 1st time, you don't have ```go.mod``` and ```go.sum``` . Then you need to run ```go mod init myapp ``` . ```go.mod`` file has all version info of your dependencies and `go.sum` is a checksum of dependencies. 
+
+In some case, the latest dependency can have a problem like missing modules or bugs.  Then you need ```go.mod``` file to assign the right version of a dependency. 
+
 
 
 When we should activate `GO1111MOULE` ?
@@ -70,7 +77,7 @@ When we should activate `GO1111MOULE` ?
 
 According to  [golang wiki](https://github.com/golang/go/wiki/Modules), ___GO111MODULE is used when you work under GOPATH__.  
 
-> Note that outside of GOPATH, you do not need to set `GO111MODULE` to activate module mode. Alternatively, if you want to work in your GOPATH:
+> Note that outside of GOPATH, you do not need to set `GO111MODULE` to activate module mode. Alternatively, if you want to work in your GOPATH:
 
 ```
 $ export GO111MODULE=on                         # manually active module mode
