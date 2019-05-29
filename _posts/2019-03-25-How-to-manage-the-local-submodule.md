@@ -49,7 +49,7 @@ $ go mod init myapp
 $ go run main.go
 ```
 
-4. No need to commit go.mod. ;-)
+4. You can get ```go.mod``` and ```go.sum``` . Keep ```go.mod``` and ```go.sum``` under version control.
 
 
 Why it works?
