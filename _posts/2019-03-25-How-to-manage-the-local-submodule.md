@@ -66,7 +66,7 @@ To guide the localtion of modules, we used ```go.mod``` and generated this file 
 
 ## Should I keep go.mod and go.sum under version control? 
 
-**My answer is YES**. In 1st time, you don't have ```go.mod``` and ```go.sum``` . Then you need to run ```go mod init myapp ``` . ```go.mod`` file has all version info of your dependencies and `go.sum` is a checksum of dependencies. 
+**My answer is YES**. In 1st time, you don't have ```go.mod``` and ```go.sum``` . Then you need to run ```go mod init myapp ``` . ```go.mod``` file has all version info of your dependencies and `go.sum` is a checksum of dependencies. 
 
 In some case, the latest dependency can have a problem like missing modules or bugs.  Then you need ```go.mod``` file to assign the right version of a dependency. 
 
