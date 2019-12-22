@@ -1,12 +1,12 @@
 ---
 layout: page
-title: About Archer
-tags: [about, Archer, Jinho, Yoo, Tech]
+title: About Jinho
+tags: [about, Jinho, Yoo, Tech]
 date: 2019-03-10
 comments: false
 ---
 
-## Who's Archer Yoo? 
+## Who's Jinho Yoo? 
 
  Experienced software engineer in microservice architect on the cloud environment and interested in machine learning.
 
@@ -25,3 +25,4 @@ comments: false
   - Virtualization and Isolation: Kubernetes, Vagrant and Docker
   - Continuous integration: Jenkins and Teamcity
 
+  

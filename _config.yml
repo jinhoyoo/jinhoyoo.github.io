@@ -1,6 +1,6 @@
 # Site
-title:              Archer's Wandering journal
-bio:                'History of Software lover'
+title:              Jinho's journal about software engineering
+bio:                'Independent software architecture'
 description:        "Very simple writing about sofware engineering."
 reading_time:       true
 words_per_minute:   200
@@ -42,7 +42,7 @@ google:
 #facebook:           username
 github-url:          jinhoyoo
 stackoverflow:       203115/jinho-yoo
-linkedin:            archer-yoo-9465359
+linkedin:           jinho-yoo-9465359
 #xing:              username
 #instagram:          username
 #lastfm:            username
