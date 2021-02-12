@@ -301,3 +301,31 @@ def setup_service_userpool(resource: core.Resource, userpool_id: str, email_body
     return cog
 ```
 
+Then you can use this function like the following.
+
+```python
+from aws_cdk import (
+    aws_iam as iam,
+    core
+)
+
+class MyStack(core.Stack):
+
+    def __init__(self, scope: core.Construct, id: str, name_tag: str, **kwargs) -> None:
+      super().__init__(scope, id, **kwargs)
+      ......
+
+    # User pool with self sign up
+    user_pool_with_self_sign_up = \
+      setup_service_userpool(self, 
+        userpool_id = 'user_pool_without_self_sign_up',
+        custom_attributes={
+          "userId": cognito.StringAttribute(max_len=128, min_len=1, mutable=True),
+          "userRole": cognito.StringAttribute(max_len=128, min_len=1, mutable=True)},
+          self_sign_up_enabled=True
+      )
+```
+
+## Not perfect, need to customize!
+
+ I'm just sharing the code snippet because maybe I can help. ;-) NEVER COPY AND PASTE THIS CODE and understand how it works. And Good luck! 
