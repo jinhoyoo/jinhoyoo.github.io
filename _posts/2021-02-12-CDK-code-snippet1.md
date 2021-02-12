@@ -2,7 +2,7 @@
 layout: post
 title: "CDK code snippet-1"
 date: 2021-02-12
-excerpt: "Today, I finished the prototyping very small web service in Go."
+excerpt: "I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language"
 tags: [AWS, CDK, Python]
 comments: false
 ---- 
@@ -21,6 +21,7 @@ comments: false
 Recently, I'm using the [CDK](https://aws.amazon.com/cdk/?nc1=h_ls) for IaC, Infrastructure as Code. I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language.
 
 > Example of HCL
+
 ```
 terraform {
   required_providers {
