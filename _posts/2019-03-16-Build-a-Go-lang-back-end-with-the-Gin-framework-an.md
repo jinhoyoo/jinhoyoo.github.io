@@ -274,8 +274,4 @@ class LoggedIn extends React.Component {
 
 ![](/assets/img/-c7d2c490-4261-4911-b281-65db1e1fd74cuntitled)
 
-OK, let's have break. 
-
-# Tip
-
- I didn't know jsx works without compiling by embedding babel.js.  In this [HTML code](https://github.com/jinhoyoo/golang-gin/blob/master/views/index.html) shows it but NEVER USE IT IN THE PRODUCTION. But seems useful for debugging.
+OK, let's have break.
