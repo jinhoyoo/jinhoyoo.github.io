@@ -5,60 +5,13 @@ date: 2021-02-12
 excerpt: "I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language"
 tags: [AWS, CDK, Python]
 comments: false
----- 
-
-[CDK code snippet](#cdk-code-snippet)
-  - [Introduction](#introduction)
-  - [Create user and get the access and secret](#create-user-and-get-the-access-and-secret)
-  - [Create S3 and prepare the CloudFront for public](#create-s3-and-prepare-the-cloudfront-for-public)
-  - [Create the user pool with your domain mail](#create-the-user-pool-with-your-domain-mail)
-
+---
 
 # CDK code snippet
 
 ## Introduction
 
-Recently, I'm using the [CDK](https://aws.amazon.com/cdk/?nc1=h_ls) for IaC, Infrastructure as Code. I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language.
-
-> Example of HCL
-
-```
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 1.0.4"
-    }
-  }
-}
-
-variable "aws_region" {}
-
-variable "base_cidr_block" {
-  description = "A /16 CIDR range definition, such as 10.1.0.0/16, that the VPC will use"
-  default = "10.1.0.0/16"
-}
-
-variable "availability_zones" {
-  description = "A list of availability zones in which to create subnets"
-  type = list(string)
-}
-
-provider "aws" {
-  region = var.aws_region
-}
-
-resource "aws_vpc" "main" {
-  # Referencing the base_cidr_block variable allows the network address
-  # to be changed without modifying the configuration.
-  cidr_block = var.base_cidr_block
-}
-
-~~~~
-}
-```
-
-You can get more introduce and reference of HCL from [this documents](https://www.terraform.io/docs/language/index.html).
+Recently, I'm using the [CDK](https://aws.amazon.com/cdk/?nc1=h_ls) for IaC, Infrastructure as Code. I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language. You can get more introduce and reference of HCL from [this documents](https://www.terraform.io/docs/language/index.html).
 
 But CDK is easy to read the code because CDK represents the infrastructure with TypeScript, Python, and C#. It means we don't need to learn very specific language and good to build the code structure like a common programming language.
 
@@ -77,10 +30,9 @@ from aws_cdk import (
     core
 )
 
-def create_aws_user(resource: core.Resource,
-											user_id: str,
-                      access_key_id: str,
-                      managed_policies: Optional[List[iam.IManagedPolicy]])->(iam.User, iam.CfnAccessKey):
+def create_aws_user(resource: core.Resource, 
+                    user_id: str, access_key_id: str,
+                    managed_policies: Optional[List[iam.IManagedPolicy]])->(iam.User, iam.CfnAccessKey):
         """ Create the user and returns the user and access key
 				:param resource: core Resource
         :param user_id: ID of AWS user resource, must be unique
@@ -106,21 +58,22 @@ class MyStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, name_tag: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
-				.......
+        ......
 
-				# setup aws user for send data to firehose
+        # Setup aws user for send data to firehose
         firehose_user_id = f"My-Firehose-User"
         firehose_access_key_id = f"My-access-key"
         firehose_user, firehose_access_key = \
-					create_aws_user(
-						firehose_user_id,
-						firehose_access_key_id, [
-	            iam.ManagedPolicy.from_aws_managed_policy_name('AmazonKinesisFirehoseFullAccess'),
-		        ]
-					)
+          create_aws_user(firehose_user_id,
+              firehose_access_key_id, [
+                iam.ManagedPolicy.from_aws_managed_policy_name(
+                  'AmazonKinesisFirehoseFullAccess'
+                  ),
+              ]
+            )
 
-				# Access key : firehose_access_key.ref
-				# Access secret : firehose_access_key.attr_secret_access_key
+		# Access key : firehose_access_key.ref
+		# Access secret : firehose_access_key.attr_secret_access_key
 ```
 
 <br>
@@ -259,28 +212,27 @@ class MyStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, name_tag: str, **kwargs) -> None:
       super().__init__(scope, id, **kwargs)
-			......
+      ......
 
-			# Create the S3 for private with new user
-			private_s3_id = "s3-for-private-with-new-user"
-			user_id_for_this_s3 = "user-for-s3-for-private-with-new-user"
+    # Create the S3 for private with new user
+    private_s3_id = "s3-for-private-with-new-user"
+    user_id_for_this_s3 = "user-for-s3-for-private-with-new-user"
 
-			(private_s3_bucket, user_for_private_s3) = \
-				setup_s3_with_domain_and_ssl_with_user(self, private_s3_id,user_id_for_this_s3)
+    (private_s3_bucket, user_for_private_s3) = \
+      setup_s3_with_domain_and_ssl_with_user(self, private_s3_id,user_id_for_this_s3)
 
-			# Create the S3 for the public with new user
-			public_s3_id = "s3-for-public-with-new-user"
-			user_id_for_public_s3 = "user-for-s3-for-public-with-new-user"
-			cf_distribution_id ="s3-for-public-storage-distribution"
-			hosted_zone_id = "s3-for-public-hosted-zone"
-			cdn_domain_for_storage = "my.own.domain.com"
+    # Create the S3 for the public with new user
+    public_s3_id = "s3-for-public-with-new-user"
+    user_id_for_public_s3 = "user-for-s3-for-public-with-new-user"
+    cf_distribution_id ="s3-for-public-storage-distribution"
+    hosted_zone_id = "s3-for-public-hosted-zone"
+    cdn_domain_for_storage = "my.own.domain.com"
 
-			# You can serve file object URL like 'https://my.own.domain.com/{file_object}'.
-			(s3_for_images, s3_user) = \
-				setup_s3_with_domain_and_ssl_with_user(
-					self,public_s3_id,user_id_for_public_s3, True,
-				  cdn_domain_for_storage, cf_distribution_id, hosted_zone_id)
-
+    # You can serve file object URL like 'https://my.own.domain.com/{file_object}'.
+    (s3_for_images, s3_user) = \
+      setup_s3_with_domain_and_ssl_with_user(
+        self,public_s3_id,user_id_for_public_s3, True,
+        cdn_domain_for_storage, cf_distribution_id, hosted_zone_id)
 
 ```
 
@@ -300,52 +252,52 @@ from aws_cdk import (
 )
 
 def setup_service_userpool(resource: core.Resource, userpool_id: str, email_body: str, custom_attributes: dict, self_sign_up_enabled: bool = False) -> cognito.UserPool:
-		""" Setup cognito user pool
-		:param resource : CDK core resource
-		:param userpool_id : Unique id of this userpoo;
-		:param email_body : Email body to send
-		:param custom_attributes : Attribution of user
-		:param self_sign_up_enabled : Whether accept to sign up by user or not. Default is False
-		:rtype: cognito.UserPool
-		"""
+    """ Setup cognito user pool
+    :param resource : CDK core resource
+    :param userpool_id : Unique id of this userpoo;
+    :param email_body : Email body to send
+    :param custom_attributes : Attribution of user
+    :param self_sign_up_enabled : Whether accept to sign up by user or not. Default is False
+    :rtype: cognito.UserPool
+    """
 
-        # SES ARN : To-Do Need to prepare SES 1st.
-        email_source_arn = "USER_SES_ARN"
+    # SES ARN : To-Do Need to prepare SES 1st.
+    email_source_arn = "USER_SES_ARN"
 
-        cog = cognito.UserPool(
-            resource, userpool_id,
-            account_recovery= cognito.AccountRecovery(cognito.AccountRecovery.EMAIL_AND_PHONE_WITHOUT_MFA),
-            auto_verify=cognito.AutoVerifiedAttrs(
-                email=True),
-            custom_attributes=custom_attributes,
-            email_settings=None,
-            lambda_triggers=None,
-            password_policy=cognito.PasswordPolicy(
-                min_length=6,
-                require_digits=True,
-                require_lowercase=True,
-                temp_password_validity=core.Duration.days(1)
-            ),
-            self_sign_up_enabled=self_sign_up_enabled,
-            user_pool_name=userpool_id,
-            sign_in_aliases=cognito.SignInAliases(
-                email=True
-            ),
-            user_verification=cognito.UserVerificationConfig(
-                email_body=email_body,
-                email_style=cognito.VerificationEmailStyle.CODE,
-                email_subject='[Verification] A verification code has arrived from Youha'
-            )
+    cog = cognito.UserPool(
+        resource, userpool_id,
+        account_recovery= cognito.AccountRecovery(cognito.AccountRecovery.EMAIL_AND_PHONE_WITHOUT_MFA),
+        auto_verify=cognito.AutoVerifiedAttrs(
+            email=True),
+        custom_attributes=custom_attributes,
+        email_settings=None,
+        lambda_triggers=None,
+        password_policy=cognito.PasswordPolicy(
+            min_length=6,
+            require_digits=True,
+            require_lowercase=True,
+            temp_password_validity=core.Duration.days(1)
+        ),
+        self_sign_up_enabled=self_sign_up_enabled,
+        user_pool_name=userpool_id,
+        sign_in_aliases=cognito.SignInAliases(
+            email=True
+        ),
+        user_verification=cognito.UserVerificationConfig(
+            email_body=email_body,
+            email_style=cognito.VerificationEmailStyle.CODE,
+            email_subject='[Verification] A verification code has arrived from Youha'
         )
+    )
 
-        email_conf = cognito.CfnUserPool.EmailConfigurationProperty(
-            email_sending_account="DEVELOPER",
-            from_="YOUR_VERIFIED_EMAIL_ADDRESS",
-            source_arn=email_source_arn)
-        cfn_userpool = cog.node.default_child
-        cfn_userpool.email_configuration = f"{userpool_id}_email_conf"
+    email_conf = cognito.CfnUserPool.EmailConfigurationProperty(
+        email_sending_account="DEVELOPER",
+        from_="YOUR_VERIFIED_EMAIL_ADDRESS",
+        source_arn=email_source_arn)
+    cfn_userpool = cog.node.default_child
+    cfn_userpool.email_configuration = f"{userpool_id}_email_conf"
 
-        cog.add_client(userpool_id + "-App")
-        return cog
+    cog.add_client(userpool_id + "-App")
+    return cog
 ```
 
