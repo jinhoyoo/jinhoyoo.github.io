@@ -20,7 +20,8 @@ comments: false
 
 Recently, I'm using the [CDK](https://aws.amazon.com/cdk/?nc1=h_ls) for IaC, Infrastructure as Code. I used the Terraform for IaC but the HCL is very difficult to learn and maintain because it uses the JSON-like format and we need to lean the new language.
 
-```json
+> Example of HCL
+```
 terraform {
   required_providers {
     aws = {
@@ -52,22 +53,7 @@ resource "aws_vpc" "main" {
   cidr_block = var.base_cidr_block
 }
 
-resource "aws_subnet" "az" {
-  # Create one subnet for each given availability zone.
-  count = length(var.availability_zones)
-
-  # For each subnet, use one of the specified availability zones.
-  availability_zone = var.availability_zones[count.index]
-
-  # By referencing the aws_vpc.main object, Terraform knows that the subnet
-  # must be created only after the VPC is created.
-  vpc_id = aws_vpc.main.id
-
-  # Built-in functions and operators can be used for simple transformations of
-  # values, such as computing a subnet address. Here we create a /20 prefix for
-  # each subnet, using consecutive addresses for each availability zone,
-  # such as 10.1.16.0/20 .
-  cidr_block = cidrsubnet(aws_vpc.main.cidr_block, 4, count.index+1)
+~~~~
 }
 ```
 
@@ -361,4 +347,4 @@ def setup_service_userpool(resource: core.Resource, userpool_id: str, email_body
         cog.add_client(userpool_id + "-App")
         return cog
 ```
-<br>
+
