@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "How to manage the local submodule without URL like github.com."
+title: "Go: How to manage the local submodule without URL like github.com."
 date: 2019-03-25
 excerpt: "Create project like following."
 tags: [Go, Module, go mod, GO1111MOULE ]
 comments: false
 ---
 
-How to manage the local submodule without URL like “github.com~~” 
+Go: How to manage the local submodule without URL like “github.com~~” 
 =========
 
 The best practice I found

@@ -2,7 +2,7 @@
 layout: post
 title: "Try to use Serverless function"
 date: 2020-01-21
-excerpt: "The record to use the serverless function"
+excerpt: "The jounal for the serverless function of AWS and GCP"
 tags: [Serverless, AWS, GCP, Lambda, SAM, cloudfunction]
 comments: false
 ---
